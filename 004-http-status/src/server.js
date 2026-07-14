@@ -25,10 +25,12 @@ const server = http.createServer((req, res) => {
             email: 'johndoe@example.com'
         })
 
-        return res.end("Criação de usuários")
+        //retorna status HTTP 201 - CREATED
+        return res.writeHead(201).end()
     }
 
-    return res.end("Rota de retorno para rotas diferentes de POST e END")
+    //tentar acessar com rota inexistente, retornará status 404
+    return res.writeHead(404).end()
 } )
 
 server.listen(3333)
